@@ -17,12 +17,30 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	ofNoFill(); //Draw shapes unfilled
 	ofBackground(255, 255, 255); //Set white background
 	ofSetColor(0, 0, 0); //Set black color
 	ofCircle(stem0, 40); //Blossom
 	ofLine(stem0, stem3); //Stem
 	ofTriangle(stem1, stem2, leftLeaf); //Left leaf
 	ofTriangle(stem1, stem2, rightLeaf); //Right leaf
+	ofPushMatrix(); //Store the coordinate system
+					//Translate the coordinate system center to stem0
+	ofTranslate(stem0);
+	//Rotate the coordinate system depending on the time
+	float angle = ofGetElapsedTimef() * 30;
+	ofRotate(angle);
+	int petals = 15; //Number of petals
+	for (int i = 0; i<petals; i++) {
+		//Rotate the coordinate system
+		ofRotate(360.0 / petals);
+		//Draw petal as a triangle
+		ofPoint p1(0, 20);
+		ofPoint p2(80, 0);
+		ofTriangle(p1, -p1, p2);
+	}
+	//Restore the coordinate system
+	ofPopMatrix();
 }
 
 //--------------------------------------------------------------
