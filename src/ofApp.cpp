@@ -19,7 +19,7 @@ void ofApp::update(){
 void ofApp::draw(){
 	ofNoFill(); //Draw shapes unfilled
 	ofBackground(255, 255, 255); //Set white background
-	ofSetColor(0, 0, 0); //Set black color
+	ofSetColor(36, 124, 78); //Set black color
 	ofCircle(stem0, 40); //Blossom
 	ofLine(stem0, stem3); //Stem
 	ofTriangle(stem1, stem2, leftLeaf); //Left leaf
